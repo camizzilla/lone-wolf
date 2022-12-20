@@ -1,0 +1,19 @@
+.checkbox-wrapper {
+  margin-top: 15px;
+}
+
+.checkbox-wrapper .w-100.cursor-pointer {
+  padding: 10px;
+}
+
+.checkbox-wrapper input {
+  margin-right: 15px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked {
+  accent-color: rgb(219, 219, 219);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

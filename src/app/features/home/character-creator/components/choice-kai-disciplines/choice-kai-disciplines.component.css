@@ -1,0 +1,25 @@
+.list-container {
+  margin-top: 5px;
+
+}
+
+.list-container .w-100.cursor-pointer {
+  padding: 10px;
+}
+
+.list-container .w-100.cursor-pointer:hover {
+  background-color: #ddd;
+}
+
+.list-container input {
+  margin-right: 15px;
+}
+
+.list-container  input[type=checkbox]:checked {
+  accent-color: rgb(219, 219, 219);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+

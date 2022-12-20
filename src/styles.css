@@ -1,1 +1,176 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+hr {
+  width: 90%;
+  color: rgb(42, 42, 42);
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgb(42, 42, 42);
+  background: #4CAF50;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.char-gen {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start-center {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.flex-between-stretch {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  background: #F9F9F9;
+  padding: 15px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: #fff;
+  margin: 15px;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn:disabled,
+.btn-square:disabled{
+  background-color:rgb(194, 194, 194);
+  color: rgb(85, 85, 85);
+  cursor:no-drop;
+}
+
+.btn-square {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-square span {
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  background: #FFF;
+  border-radius: 5px;
+  margin: 0 5px 0 0;
+  padding: 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #4CAF50;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+  border: 2px solid #4CAF50;
+}
+
+.mx-5 {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.my-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.w-100 {
+  width: 100%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-50 {
+  width: 50%;
+}
+
+.error {
+  color: red;
+}
+
+

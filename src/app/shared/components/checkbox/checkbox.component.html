@@ -1,0 +1,6 @@
+<div *ngIf="isVisibled" class="flex-start-center checkbox-wrapper">
+        <input #checkbox class="cursor-pointer" type="checkbox" [checked]="isChecked" (change)="handleCheck($event.target)" />
+        <div (click)="toggleCheck(checkbox)" class="cursor-pointer">
+          <span>{{descr}}</span>
+        </div>
+    </div>

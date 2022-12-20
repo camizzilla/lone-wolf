@@ -1,0 +1,21 @@
+ol li {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+ol li:last-child {
+    border-bottom: none;
+}
+
+ol li p {
+    width: 50%;
+}
+
+ol li p.descr {
+    font-size: 12px;
+    line-height: 12px;
+}

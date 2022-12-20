@@ -1,0 +1,83 @@
+
+<div class='flex-between-center'>
+    <app-numeric-block
+        [title]="'Combact Skill'"
+        [value]="charaterDataService.lonewolf.combatSkill"
+        (numberEvent)="charaterDataService.setCombatSkill($event)"
+    ></app-numeric-block>
+    <app-numeric-block
+        [title]="'Endurance Points'"
+        [value]="charaterDataService.lonewolf.endurancePoints"
+        [maxValue]="charaterDataService.maxEndurancePoints"
+        (numberEvent)="charaterDataService.setEndurancePoints($event)"
+    ></app-numeric-block>
+</div>
+<app-checkbox
+    [descr]="'Psicolaser'"
+    [isVisibled]="charaterDataService.isVisibled"
+    [isChecked]="true"
+    (checkboxValueEvent)="charaterDataService.addValueToCombactSkill($event, 2)"
+></app-checkbox>
+<hr>
+<app-combat-record
+    [combactSkillLW]="charaterDataService.lonewolf.combatSkill"
+    [endurancePointsLW]="charaterDataService.lonewolf.endurancePoints"
+    (endurancePointsLWEvent)="charaterDataService.endurancePointsHit($event)"
+></app-combat-record>
+<hr>
+<app-input-dice
+      [title]="'Tira il dado'"
+></app-input-dice>
+<hr>
+<app-list-with-description
+    [title]="'Kai Disciplines'"
+    [items]="charaterDataService.kaiDisciplinesListInfo"
+></app-list-with-description>
+<hr>
+<app-list-items
+    [title]="'Weapons'"
+    [items]="charaterDataService.weapons"
+    [maxItems]="2"
+    (deleteItemEvent)="charaterDataService.deleteWeapon($event)"
+    (openModifyItemEvent)="charaterDataService.openModifyWeapon($event)"
+    (modifyItemEvent)="charaterDataService.modifyWeapon($event)"
+    (deleteItemEvent)="charaterDataService.resetListWeapons()"
+    (addNewItemEvent)="charaterDataService.addNewWeapon($event)"
+></app-list-items>
+<hr>
+<app-list-items
+    [title]="'Items'"
+    [items]="charaterDataService.items"
+    [maxItems]="charaterDataService.maxItems"
+    (deleteItemEvent)="charaterDataService.deleteItems($event)"
+    (openModifyItemEvent)="charaterDataService.openModifyItems($event)"
+    (modifyItemEvent)="charaterDataService.modifyItems($event)"
+    (deleteItemEvent)="charaterDataService.resetListItems()"
+    (addNewItemEvent)="charaterDataService.addNewItem($event)"
+></app-list-items>
+<hr>
+<div class='flex-between-center'>
+    <app-numeric-block
+        [title]="'Meals'"
+        [value]="charaterDataService.lonewolf.backpack.meals"
+        [maxValue]="charaterDataService.maxItemsMeals"
+        (numberEvent)="charaterDataService.setMeals($event)"
+    ></app-numeric-block>
+    <app-numeric-block
+        [title]="'Gold Coins'"
+        [value]="charaterDataService.lonewolf.beltPouch"
+        [maxValue]="50"
+        (numberEvent)="charaterDataService.setGoldCoins($event)"
+    ></app-numeric-block>
+</div>
+<app-list-items
+    [title]="'Items'"
+    [items]="charaterDataService.specialItems"
+    (deleteItemEvent)="charaterDataService.deleteSpecialItems($event)"
+    (openModifyItemEvent)="charaterDataService.openModifySpecialItems($event)"
+    (modifyItemEvent)="charaterDataService.modifySpecialItems($event)"
+    (deleteItemEvent)="charaterDataService.resetSpecialItems()"
+    (addNewItemEvent)="charaterDataService.addNewSpecialItems($event)"
+></app-list-items>
+
+<!-- <pre>{{ charaterDataService.lonewolf | json }}</pre> -->

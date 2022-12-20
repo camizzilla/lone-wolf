@@ -1,0 +1,8 @@
+<div class="flex-between-center my-5">
+    <h3 class="title">Lone Wolf</h3>
+    <div class="btns flex-between-center ">
+        <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" (click)="save()" ><span>📥</span></button>
+        <!-- <button type="button" class="flex-center-center" (click)="restore()" ><span>📤 </span></button> -->
+        <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" (click)="clear()" ><span>🗑</span></button>
+    </div>
+</div>

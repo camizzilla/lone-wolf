@@ -1,0 +1,59 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <app-input-dice
+      formControlName="combactSkill"
+      [title]="'Combact Skill'"
+      [dice]="10"
+      [addNumber]="10"
+    ></app-input-dice>
+    <p *ngIf="form.get('combactSkill')?.errors?.['required'] && submitted">
+      <small class="error">Roll dice for combact skill</small>
+    </p>
+    <app-input-dice
+      formControlName="endurancePoints"
+      [title]="'Endurance Points'"
+      [dice]="10"
+      [addNumber]="20"
+    ></app-input-dice>
+    <p *ngIf="form.get('endurancePoints')?.errors?.['required'] && submitted">
+      <small class="error">Roll dice for endurance points</small>
+    </p>
+  </div>
+  <hr />
+  <app-choice-kai-disciplines
+    formControlName="kaiDisciplines"
+  ></app-choice-kai-disciplines>
+  <p *ngIf="(form.get('kaiDisciplines')?.errors?.['maxCheck'] || !form.get('kaiDisciplines')?.value) && submitted">
+    <small class="error">Check 5 disciplines</small>
+  </p>
+  <p
+    *ngIf="form.get('kaiDisciplines')?.errors?.['masterInWeapon'] && submitted"
+  >
+    <small class="error">Roll dice for select weapon</small>
+  </p>
+  <hr />
+  <app-input-dice
+    formControlName="findInTheRuins"
+    [title]="'Find in the ruins'"
+    [array]="datesService.items"
+  ></app-input-dice>
+  <p *ngIf="form.get('findInTheRuins')?.errors?.['required'] && submitted">
+    <small class="error">Roll dice for Find in the ruins</small>
+  </p>
+  <app-input-dice
+    formControlName="goldCoin"
+    [title]="'Gold coin'"
+    [addNumber]="1"
+  ></app-input-dice>
+  <p *ngIf="form.get('goldCoin')?.errors?.['required'] && submitted">
+    <small class="error">Roll dice for gold coin</small>
+  </p>
+  <hr />
+  <div class="flex-center-center">
+    <button class="btn w-80" type="submit">Play</button>
+  </div>
+</form>
+
+<!-- <pre>{{ form.value | json }}</pre>
+<pre>form valid: {{ form.valid | json }}</pre>
+<pre>form touched: {{ form.touched | json }}</pre> -->

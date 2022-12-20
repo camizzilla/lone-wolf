@@ -1,0 +1,34 @@
+<div class='app-background'>
+    <h3 class='title'>{{ title }}</h3>
+    <div class='main-container'>
+        <div *ngIf="items.length < maxItems" class='add-item-box flex-between-center'>
+          <input type="text" [value]="inputNewValue" (change)="setInputValue($event)" class='add-item-input' placeholder='Add an item...' />
+          <button class='btn-square' (click)="handleAddButtonClick()"><span class='btn-plus-minus'>+</span></button>
+        </div>
+
+      <div class='item-list'>
+          <div *ngFor="let item of items" class='item-container my-5'>
+              <div *ngIf="!item.isModify" class="flex-between-center">
+                <div>
+                  <span>{{item.name}}</span>
+                </div>
+                <div>
+                  <button class='btn-square mx-5' (click)="handleModifyButtonClick(item)"> ✏️ </button>
+                  <button class='btn-square' (click)="handleDeleteButtonClick(item)"> 🗑️ </button>
+                </div>
+              </div>
+
+              <!--ELSE IF -->
+              <div *ngIf="item.isModify" class='add-item-box flex-between-center'>
+                <input type="text" [value]="inputValueModify" (change)="setInputValueModify($event)" class='add-item-input' [placeholder]="item.name" />
+                <div class="flex-center-center">
+                  <button class='btn-square mx-5' (click)="handleModifyInputClick(item)">✔️</button>
+                  <button class='btn-square' (click)="handleCloseInputClick()"> ❌ </button>
+                </div>
+              </div>
+
+
+          </div>
+      </div>
+    </div>
+  </div>

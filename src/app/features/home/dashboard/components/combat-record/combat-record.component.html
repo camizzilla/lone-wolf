@@ -1,0 +1,49 @@
+<div class="accordion flex-between-center" [class]="{'active': isCollapsed}" (click)="isCollapsed = !isCollapsed">
+  <h3>Combat record</h3>
+  <i class="arrow mx-5" [class]="isCollapsed ? 'up' : 'down'"></i>
+</div>
+<div class="panel" *ngIf="isCollapsed" >
+    <form *ngIf="!isCombatRecord" class="flex-between-center" (ngSubmit)="onSubmit()" [formGroup]="formEnemy">
+        <div class="flex-between-center">
+            <div class="mx-5">
+                <label for="combact-skill">Combattività</label>
+                <input type="number" min="0" name="combact-skill" formControlName="combactSkill">
+            </div>
+            <div class="mx-5">
+                <label for="endurance-points">Resistenza</label>
+                <input type="number" min="0" name="endurance-points" formControlName="endurancePoints">
+            </div>
+        </div>
+        <button class="btn" type="submit" [disabled]="!formEnemy.valid">Inizia</button>
+    </form>
+    <div *ngIf="isCombatRecord">
+      <div class="flex-between-stretch my-5">
+          <div class='numeric-block-container'>
+              <h4 class='title'>Lupo Solitario</h4>
+              <h4>{{endurancePointsLW}}</h4>
+          </div>
+          <div class='numeric-block-container background-gray'>
+              <h4 class='title'>Rapporto di forza</h4>
+              <h4>{{combatRatio}}</h4>
+          </div>
+          <div class='numeric-block-container'>
+              <h4 class='title'>Nemico</h4>
+                <h4>{{endurancePointsEnemy}}</h4>
+          </div>
+      </div>
+      <div>
+        <div class="btns">
+          <button class="btn" (click)="fight()">Round</button>
+          <button class="btn" (click)="annul()">Annulla</button>
+        </div>
+        <div *ngIf="!isEnemyDead && !isLoneWolfDead">
+            <p>Lupo solitario perde <span>{{ls}}</span> punto resistenza</p>
+            <p>Nemico perde <span>{{n}}</span> punto resistenza</p>
+        </div>
+        <div *ngIf="isEnemyDead || isLoneWolfDead">
+            <h3 *ngIf="isLoneWolfDead" class="text-bold">La tua avvenutura finisce qui Lupo solitario !!!</h3>
+            <h3 *ngIf="isEnemyDead" class="text-bold">Il tuo nemico è stato sconfitto!</h3>
+        </div>
+      </div>
+    </div>
+</div>

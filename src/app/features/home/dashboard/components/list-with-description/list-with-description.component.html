@@ -1,0 +1,7 @@
+<ol *ngIf="items?.length" class='item-list'>
+    <h3 class='title'>{{title}}</h3>
+      <li  *ngFor="let item of items" class='item-container'>
+        <p> {{item.name}} </p>
+        <p class='descr'>{{item.descr}}</p>
+      </li>
+  </ol>

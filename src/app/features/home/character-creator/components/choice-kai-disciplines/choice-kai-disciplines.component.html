@@ -1,0 +1,17 @@
+<div class="checkList">
+  <div class="list-container" *ngFor="let KaiDiscipline of datesService.kaiDisciplinesList">
+    <div class="flex-start-center">
+      <input #checkbox class="cursor-pointer" [value]="KaiDiscipline" type="checkbox" (change)="handleCheck($event.target)" />
+      <div (click)="toggleCheck(checkbox)" class="w-100 cursor-pointer">
+        <span>{{KaiDiscipline}}</span>
+      </div>
+    </div>
+      <app-input-dice
+        *ngIf="checkbox.checked && KaiDiscipline === 'Scherma'"
+        [title]="'Endurance Points'"
+        [dice]="10"
+        [array]="datesService.weaponsList"
+        (selectedEvent)="handlerValueSelectedInputDice($event)"
+      ></app-input-dice>
+    </div>
+</div>
