@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   save(){
-    this.cdService
+    this.cdService.saveStore()
   }
 
   restore(){
