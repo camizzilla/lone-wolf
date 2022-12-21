@@ -34,10 +34,21 @@ export class CharacterDateService {
 
   loadStore(store: string){
     this._lonewolf = JSON.parse(store);
+    this.setItemsArray();
+    this.setMaxItems();
+    this._isVisibled = this._lonewolf.kaiDisciplines.some(kai => kai === 'Psicolaser');
+    const isWeaponSkill = this._lonewolf.weapons.length && this._lonewolf.weapons.some(weapon => weapon === this._lonewolf.weaponSkill?.toLowerCase());
+    isWeaponSkill && (this._lonewolf.combatSkill = this._lonewolf.combatSkill + 2);
+    if(!this.storeService.localStorageJson ){
+      this.saveStore();
+      window.location.reload();
+    } else {
+      this.saveStore();
+    }
   }
 
   saveStore(){
-    this.storeService.savelocalStorageJson(this._lonewolf)
+    this.storeService.savelocalStorageJson(this._lonewolf);
   }
 
   setDateFromChararcterGenerator( value: CharacterGenerationValue ){
@@ -47,17 +58,24 @@ export class CharacterDateService {
     this._lonewolf.weaponSkill = value.kaiDisciplines.masterInWeapon;
     this._lonewolf.beltPouch = value.goldCoin;
     this.setActionChart(value.findInTheRuins);
-    this._weapon = this.tools.addIsModifyTolistItemsArray(this._lonewolf.weapons);
-    this._items = this.tools.addIsModifyTolistItemsArray(this._lonewolf.backpack.items);
-    this._specialItems = this.tools.addIsModifyTolistItemsArray(this._lonewolf.specialItems);
-
-    this._maxItems = this._maxItemsBackpack - this._lonewolf.backpack.meals;
-    this._maxItemsMeals = this._maxItemsBackpack - this._lonewolf.backpack.items.length;
-    this._maxEndurancePoints = this._lonewolf.endurancePoints;
+    this.setItemsArray();
+    this.setMaxItems();
 
     this._isVisibled = this._lonewolf.kaiDisciplines.some(kai => kai === 'Psicolaser');
     this._lonewolf.weaponSkill === 'Ascia' && (this._lonewolf.combatSkill = this._lonewolf.combatSkill + 2);
     this.saveStore()
+  }
+
+  setItemsArray(){
+    this._weapon = this.tools.addIsModifyTolistItemsArray(this._lonewolf.weapons);
+    this._items = this.tools.addIsModifyTolistItemsArray(this._lonewolf.backpack.items);
+    this._specialItems = this.tools.addIsModifyTolistItemsArray(this._lonewolf.specialItems);
+  }
+
+  setMaxItems(){
+    this._maxItems = this._maxItemsBackpack - this._lonewolf.backpack.meals;
+    this._maxItemsMeals = this._maxItemsBackpack - this._lonewolf.backpack.items.length;
+    this._maxEndurancePoints = this._lonewolf.endurancePoints;
   }
 
   setActionChart(itemsUnderRuin: string){
@@ -228,5 +246,9 @@ export class CharacterDateService {
 
   endurancePointsHit( endurancePoints: number){
     this._lonewolf.endurancePoints = endurancePoints;
+  }
+
+  downLoad(){
+    this.storeService.dynamicDownloadJson( this.lonewolf)
   }
 }

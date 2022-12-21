@@ -9,6 +9,8 @@ import { StoreService } from 'src/app/shared/services/store.service';
 })
 export class NavbarComponent implements OnInit {
 
+  isUpload:boolean = false;
+
   constructor(
     private cdService: CharacterDateService,
     public storeService: StoreService
@@ -17,16 +19,38 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(){
+  saveLocal(){
     this.cdService.saveStore()
-  }
-
-  restore(){
-
   }
 
   clear(){
     this.storeService.cancelLocalStorageJson()
+  }
+
+  upload(){
+    this.isUpload = true;
+  }
+
+  downLoad(){
+    this.cdService.downLoad()
+  }
+
+  uploadFile(event:any){
+    let jsonObj:{} = {}
+
+    const selectedFile = event.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.readAsText(selectedFile, 'UTF-8');
+
+    fileReader.onload = () => {
+      jsonObj= fileReader?.result && JSON.parse( fileReader.result.toString() );
+      this.cdService.loadStore(JSON.stringify(jsonObj))
+      this.isUpload = false;
+    }
+
+    fileReader.onerror = (error) => {
+    console.log(error);
+    }
   }
 
 }
