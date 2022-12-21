@@ -1,10 +1,10 @@
 <div class="flex-between-center my-5">
     <h3 class="title">Lone Wolf</h3>
     <div class="btns flex-between-center ">
-      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" (click)="downLoad()" ><span>📤</span></button>
-      <button type="button" class="flex-center-center" (click)="upload()" ><span>📥</span></button>
-      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" (click)="saveLocal()" ><span>📲</span></button>
-      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" (click)="clear()" ><span>🗑</span></button>
+      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" title="Scarica il file JSON con i dati" (click)="downLoad()"><span>📤</span></button>
+      <button type="button" class="flex-center-center" title="Carica il file JSON salvato precendentemente" (click)="upload()" ><span>📥</span></button>
+      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" title="Salva i dati in Locale" (click)="saveLocal()" ><span>📲</span></button>
+      <button *ngIf="storeService.localStorageJson" type="button" class="flex-center-center" title="Cancella i dati in Locale" (click)="clear()" ><span>🗑</span></button>
     </div>
   </div>
   <div *ngIf="isUpload" class="my-5">
