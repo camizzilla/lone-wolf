@@ -2,21 +2,21 @@
   <div>
     <app-input-dice
       formControlName="combactSkill"
-      [title]="'Combact Skill'"
+      [title]="'Combattività'"
       [dice]="10"
       [addNumber]="10"
     ></app-input-dice>
     <p *ngIf="form.get('combactSkill')?.errors?.['required'] && submitted">
-      <small class="error">Roll dice for combact skill</small>
+      <small class="error">Lancia il dado per la combattività</small>
     </p>
     <app-input-dice
       formControlName="endurancePoints"
-      [title]="'Endurance Points'"
+      [title]="'Resistenza'"
       [dice]="10"
       [addNumber]="20"
     ></app-input-dice>
     <p *ngIf="form.get('endurancePoints')?.errors?.['required'] && submitted">
-      <small class="error">Roll dice for endurance points</small>
+      <small class="error">Lancia il dado per la resistenza</small>
     </p>
   </div>
   <hr />
@@ -24,33 +24,33 @@
     formControlName="kaiDisciplines"
   ></app-choice-kai-disciplines>
   <p *ngIf="(form.get('kaiDisciplines')?.errors?.['maxCheck'] || !form.get('kaiDisciplines')?.value) && submitted">
-    <small class="error">Check 5 disciplines</small>
+    <small class="error">Scegli 5 discipline</small>
   </p>
   <p
     *ngIf="form.get('kaiDisciplines')?.errors?.['masterInWeapon'] && submitted"
   >
-    <small class="error">Roll dice for select weapon</small>
+    <small class="error">Lancia il dado per selezionare l'arma</small>
   </p>
   <hr />
   <app-input-dice
     formControlName="findInTheRuins"
-    [title]="'Find in the ruins'"
+    [title]="'Trovi tra le rovine'"
     [array]="datesService.items"
   ></app-input-dice>
   <p *ngIf="form.get('findInTheRuins')?.errors?.['required'] && submitted">
-    <small class="error">Roll dice for Find in the ruins</small>
+    <small class="error">Lancia il dado per sapere cosa trovi tra le rovine</small>
   </p>
   <app-input-dice
     formControlName="goldCoin"
-    [title]="'Gold coin'"
+    [title]="'Monete d\'oro'"
     [addNumber]="1"
   ></app-input-dice>
   <p *ngIf="form.get('goldCoin')?.errors?.['required'] && submitted">
-    <small class="error">Roll dice for gold coin</small>
+    <small class="error">Lancia il dado per le monete d'oro</small>
   </p>
   <hr />
   <div class="flex-center-center">
-    <button class="btn w-80" type="submit">Play</button>
+    <button class="btn w-80" type="submit">Gioca</button>
   </div>
 </form>
 

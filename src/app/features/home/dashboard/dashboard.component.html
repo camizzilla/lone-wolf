@@ -1,12 +1,12 @@
 
 <div class='flex-between-center'>
     <app-numeric-block
-        [title]="'Combact Skill'"
+        [title]="'Combattività'"
         [value]="charaterDataService.lonewolf.combatSkill"
         (numberEvent)="charaterDataService.setCombatSkill($event)"
     ></app-numeric-block>
     <app-numeric-block
-        [title]="'Endurance Points'"
+        [title]="'Resistenza'"
         [value]="charaterDataService.lonewolf.endurancePoints"
         [maxValue]="charaterDataService.maxEndurancePoints"
         (numberEvent)="charaterDataService.setEndurancePoints($event)"
@@ -30,12 +30,12 @@
 ></app-input-dice>
 <hr>
 <app-list-with-description
-    [title]="'Kai Disciplines'"
+    [title]="'Discipline Kai'"
     [items]="charaterDataService.kaiDisciplinesListInfo"
 ></app-list-with-description>
 <hr>
 <app-list-items
-    [title]="'Weapons'"
+    [title]="'Armi'"
     [items]="charaterDataService.weapons"
     [maxItems]="2"
     (deleteItemEvent)="charaterDataService.deleteWeapon($event)"
@@ -46,7 +46,7 @@
 ></app-list-items>
 <hr>
 <app-list-items
-    [title]="'Items'"
+    [title]="'Oggetti'"
     [items]="charaterDataService.items"
     [maxItems]="charaterDataService.maxItems"
     (deleteItemEvent)="charaterDataService.deleteItems($event)"
@@ -58,20 +58,20 @@
 <hr>
 <div class='flex-between-center'>
     <app-numeric-block
-        [title]="'Meals'"
+        [title]="'Pasti'"
         [value]="charaterDataService.lonewolf.backpack.meals"
         [maxValue]="charaterDataService.maxItemsMeals"
         (numberEvent)="charaterDataService.setMeals($event)"
     ></app-numeric-block>
     <app-numeric-block
-        [title]="'Gold Coins'"
+        [title]="'Corone'"
         [value]="charaterDataService.lonewolf.beltPouch"
         [maxValue]="50"
         (numberEvent)="charaterDataService.setGoldCoins($event)"
     ></app-numeric-block>
 </div>
 <app-list-items
-    [title]="'Items'"
+    [title]="'Oggetti speciali'"
     [items]="charaterDataService.specialItems"
     (deleteItemEvent)="charaterDataService.deleteSpecialItems($event)"
     (openModifyItemEvent)="charaterDataService.openModifySpecialItems($event)"

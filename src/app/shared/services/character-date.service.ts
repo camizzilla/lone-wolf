@@ -10,24 +10,26 @@ import { ToolsService } from './tools.service';
 
 export class CharacterDateService {
 
- private _lonewolf: LoneWolf;
- private _weapon: ListItems[];
- private _items: ListItems[];
- private _specialItems: ListItems[];
+ private _lonewolf: LoneWolf; // oggetto con tutti i dati id LS
+ private _weapon: ListItems[]; // lista di armi
+ private _items: ListItems[]; // lista di oggetti
+ private _specialItems: ListItems[]; // lista di oggetti speciali
 
+ // inizializzazione del
  private _maxEndurancePoints: number = 0;
  private _maxItemsBackpack: number = 8;
  private _maxItems: number = 0;
  private _maxItemsMeals: number = 0;
+
  private _isVisibled: boolean = false;
 
   constructor(
     public datesService: DatesService,
     private tools: ToolsService,
-    private storeService: StoreService
+    private storeService: StoreService,
   ) {
     this._lonewolf = datesService.initLoneWolf;
-    this._weapon = this.tools.addIsModifyTolistItemsArray(this._lonewolf.weapons);
+    this._weapon = this.tools.addIsModifyTolistItemsArray(this._lonewolf.weapons); // modifica array di stringhe in un array di oggetti {name, isModify}
     this._items = this.tools.addIsModifyTolistItemsArray(this._lonewolf.backpack.items);
     this._specialItems = this.tools.addIsModifyTolistItemsArray(this._lonewolf.specialItems);
   }
@@ -63,7 +65,7 @@ export class CharacterDateService {
 
     this._isVisibled = this._lonewolf.kaiDisciplines.some(kai => kai === 'Psicolaser');
     this._lonewolf.weaponSkill === 'Ascia' && (this._lonewolf.combatSkill = this._lonewolf.combatSkill + 2);
-    this.saveStore()
+    this.saveStore();
   }
 
   setItemsArray(){
@@ -107,12 +109,12 @@ export class CharacterDateService {
     return this._lonewolf;
   }
 
-  setCombatSkill(opeation: string){
-    this._lonewolf.combatSkill = opeation === '+' ? this._lonewolf.combatSkill + 1 : this._lonewolf.combatSkill - 1;
+  setCombatSkill(operation: string){
+    this._lonewolf.combatSkill = this.tools.switchOperation(operation, this._lonewolf.combatSkill);
   }
 
-  setEndurancePoints(opeation: string){
-    this._lonewolf.endurancePoints =  opeation === '+' ? this._lonewolf.endurancePoints + 1 : this._lonewolf.endurancePoints -1;
+  setEndurancePoints(operation: string){
+    this._lonewolf.endurancePoints = this.tools.switchOperation(operation, this._lonewolf.endurancePoints);
   }
 
   get maxEndurancePoints(){

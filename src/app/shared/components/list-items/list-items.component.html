@@ -2,7 +2,7 @@
     <h3 class='title'>{{ title }}</h3>
     <div class='main-container'>
         <div *ngIf="items.length < maxItems" class='add-item-box flex-between-center'>
-          <input type="text" [value]="inputNewValue" (change)="setInputValue($event)" class='add-item-input' placeholder='Add an item...' />
+          <input type="text" [value]="inputNewValue" (change)="setInputValue($event)" class='add-item-input' [placeholder]="'Aggiungi ' + title" />
           <button class='btn-square' (click)="handleAddButtonClick()"><span class='btn-plus-minus'>+</span></button>
         </div>
 
